@@ -3,706 +3,815 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semangat ASPD!</title>
+    <title>Perencanaan/Desain Proyek</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        
         :root {
-            --primary: #4776E6;
-            --secondary: #8E54E9;
-            --light: #f8f9fa;
-            --dark: #343a40;
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
         }
         
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-        
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
         .container {
-            max-width: 850px;
-            width: 90%;
-            text-align: center;
-            padding: 2.5rem;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideUp 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        @keyframes slideUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            bottom: -8px;
-            left: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s;
-            animation: lineGrow 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards 0.5s;
-        }
-        
-        @keyframes lineGrow {
-            to {
-                transform: scaleX(1);
-                transform-origin: bottom left;
-            }
-        }
-        
-        .message {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out forwards 0.8s;
-        }
-        
-        .tips {
-            text-align: left;
-            margin: 2.5rem 0;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 15px;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out 1s forwards;
-            transition: all 0.3s;
-        }
-        
-        .tips:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tips h2 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .tips h2::before {
-            content: '✓';
-            margin-right: 10px;
-            background: var(--primary);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        
-        .tips ul {
-            padding-left: 1.8rem;
-        }
-        
-        .tips li {
-            margin-bottom: 0.9rem;
-            position: relative;
-            padding-left: 5px;
-        }
-        
-        .tips li::marker {
-            color: var(--primary);
-        }
-        
-        .countdown-container {
-            position: relative;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(71, 118, 230, 0.1), rgba(142, 84, 233, 0.1));
-            border-radius: 20px;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.2s forwards;
-        }
-        
-        .countdown {
+            margin: 0;
             font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--primary);
+        }
+        
+        .project-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .member-input {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: pulse 2s infinite;
-        }
-        
-        .countdown-number {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            min-width: 70px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            color: var(--dark);
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.03);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .member-input input {
+            flex: 1;
         }
         
         .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background-color: var(--secondary-color);
             color: white;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(71, 118, 230, 0.3);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out 1.4s forwards;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
         }
         
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(71, 118, 230, 0.4);
+            background-color: #2980b9;
         }
         
-        .btn:hover::before {
-            left: 100%;
+        .btn-danger {
+            background-color: var(--accent-color);
         }
         
-        .quote-container {
-            position: relative;
-            margin: 2.5rem 0;
-            padding: 2rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.6s forwards;
-            transition: all 0.3s;
+        .btn-danger:hover {
+            background-color: #c0392b;
         }
         
-        .quote-container::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 10px;
-            font-size: 8rem;
-            color: rgba(71, 118, 230, 0.1);
-            font-family: serif;
+        .btn-add {
+            background-color: #27ae60;
+            margin-top: 10px;
         }
         
-        .quote {
-            font-style: italic;
-            color: var(--dark);
-            position: relative;
-            z-index: 2;
+        .btn-add:hover {
+            background-color: #219653;
         }
         
-        .author {
-            margin-top: 1rem;
-            text-align: right;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        footer {
-            margin-top: 2.5rem;
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.8s forwards;
-        }
-        
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Modern confetti effect */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            opacity: 0;
-            z-index: -1;
-        }
-        
-        /* Floating icons */
-        .floating-icon {
-            position: absolute;
-            z-index: -1;
-            opacity: 0.7;
-            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
-            animation: float ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0);
-            }
-        }
-        
-        /* Progress bar */
-        .progress-container {
+        table {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.3);
-            margin-top: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
         
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
-            transition: width 0.5s ease;
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
         
-        /* Media Queries */
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .preview-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .preview-content {
+            border: 1px dashed #ccc;
+            padding: 20px;
+            min-height: 200px;
+            background-color: #f9f9f9;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload label {
+            cursor: pointer;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
         @media (max-width: 768px) {
             .container {
-                padding: 2rem 1.5rem;
+                padding: 10px;
             }
             
-            h1 {
-                font-size: 2.2rem;
+            .project-form {
+                padding: 15px;
             }
             
-            .countdown {
-                font-size: 1.8rem;
-                gap: 10px;
-            }
-            
-            .countdown-number {
-                min-width: 60px;
-                padding: 0.4rem 0.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem 1rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .message {
-                font-size: 1rem;
-            }
-            
-            .countdown {
-                font-size: 1.5rem;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .countdown-number {
-                min-width: 50px;
-                padding: 0.3rem 0.6rem;
+            .member-input {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Perencanaan / Desain Proyek</h1>
+        </div>
+    </header>
+    
     <div class="container">
-        <!-- Floating icons -->
-        <div class="floating-icons-container"></div>
-        
-        <h1>Siap Menghadapi ASPD!</h1>
-        
-        <div class="message">
-            Besok adalah hari yang penting. Kamu telah bekerja keras untuk mempersiapkan diri. 
-            Percayalah pada kemampuanmu, dan ingat bahwa setiap tantangan adalah kesempatan untuk tumbuh.
-        </div>
-        
-        <div class="countdown-container">
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Jam</div>
+        <form id="projectForm" class="project-form">
+            <!-- 1. JUDUL PROJEK -->
+            <div class="form-group">
+                <h2>1. Judul Proyek</h2>
+                <input type="text" id="projectTitle" placeholder="Masukkan judul proyek" required>
+            </div>
+            
+            <!-- 2. NAMA ANGGOTA DAN NAMA TIM -->
+            <div class="form-group">
+                <h2>2. Nama Anggota dan Nama Tim</h2>
+                <div id="teamMembersContainer">
+                    <div class="member-input">
+                        <input type="text" placeholder="Nama anggota" class="member-name" required>
+                        <button type="button" class="btn btn-danger remove-member">Hapus</button>
+                    </div>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Menit</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Detik</div>
+                <button type="button" id="addMemberBtn" class="btn btn-add">Tambah Anggota</button>
+                <div style="margin-top: 20px;">
+                    <label for="teamName">Nama Tim</label>
+                    <input type="text" id="teamName" placeholder="Masukkan nama tim" required>
                 </div>
             </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+            
+            <!-- 3. MASALAH YANG MAU DITELITI -->
+            <div class="form-group">
+                <h2>3. Masalah yang Mau Diteliti</h2>
+                <textarea id="researchProblem" placeholder="Deskripsi masalah yang akan diteliti" required></textarea>
             </div>
-        </div>
-        
-        <div class="tips">
-            <h2>Tips Menghadapi ASPD:</h2>
-            <ul id="tips-list">
-                <li>Istirahat yang cukup malam ini - otak yang segar bekerja lebih baik.</li>
-                <li>Baca kembali materi dengan tenang, jangan terburu-buru.</li>
-                <li>Tarik napas dalam-dalam saat merasa tegang.</li>
-                <li>Kerjakan soal dari yang termudah.</li>
-                <li>Percaya pada persiapan yang telah kamu lakukan.</li>
-            </ul>
-        </div>
-        
-        <div class="quote-container">
-            <div class="quote" id="quote">
-                "Keberhasilan bukanlah kebetulan. Itu adalah hasil dari kerja keras, ketekunan, belajar, 
-                pengorbanan, dan yang terpenting, cinta pada apa yang kamu lakukan."
+            
+            <!-- 4. PENYEBAB MASALAH (LATAR BELAKANG MASALAH) -->
+            <div class="form-group">
+                <h2>4. Penyebab Masalah (Latar Belakang Masalah)</h2>
+                <textarea id="problemBackground" placeholder="Jelaskan latar belakang masalah" required></textarea>
             </div>
-            <div class="author" id="author">- John C. Maxwell</div>
+            
+            <!-- 5. TUJUAN PROJEK -->
+            <div class="form-group">
+                <h2>5. Tujuan Proyek</h2>
+                <textarea id="projectGoals" placeholder="Tujuan dari proyek ini" required></textarea>
+            </div>
+            
+            <!-- 6. MANFAAT PROJEK -->
+            <div class="form-group">
+                <h2>6. Manfaat Proyek</h2>
+                <textarea id="projectBenefits" placeholder="Manfaat yang didapat dari proyek ini" required></textarea>
+            </div>
+            
+            <!-- 7. DESAIN PROJEK (GAMBAR RANCANGAN PURWARUPA) -->
+            <div class="form-group">
+                <h2>7. Desain Proyek (Gambar Rancangan Purwarupa)</h2>
+                <div class="file-upload">
+                    <input type="file" id="designFile" accept="image/*">
+                    <label for="designFile">Unggah Gambar Desain</label>
+                    <div id="designFileName" class="file-name">Belum ada file dipilih</div>
+                </div>
+                <div id="designPreview" class="hidden">
+                    <h3>Pratinjau Desain</h3>
+                    <img id="designPreviewImage" src="#" alt="Pratinjau Desain" style="max-width: 100%; max-height: 300px;">
+                </div>
+            </div>
+            
+            <!-- 8. ALAT DAN BAHAN -->
+            <div class="form-group">
+                <h2>8. Alat dan Bahan</h2>
+                <div id="materialsContainer">
+                    <div class="member-input">
+                        <input type="text" placeholder="Nama alat/bahan" class="material-name" required>
+                        <input type="number" placeholder="Jumlah" class="material-quantity" min="1" required>
+                        <button type="button" class="btn btn-danger remove-material">Hapus</button>
+                    </div>
+                </div>
+                <button type="button" id="addMaterialBtn" class="btn btn-add">Tambah Alat/Bahan</button>
+            </div>
+            
+            <!-- 9. TABEL PERENCANAAN BIAYA -->
+            <div class="form-group">
+                <h2>9. Tabel Perencanaan Biaya</h2>
+                <div class="table-controls">
+                    <button type="button" id="addCostBtn" class="btn btn-add">Tambah Item</button>
+                </div>
+                <table id="costTable">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Jumlah</th>
+                            <th>Harga Satuan</th>
+                            <th>Total</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="cost-item" placeholder="Nama item" required></td>
+                            <td><input type="number" class="cost-quantity" min="1" value="1" required></td>
+                            <td><input type="number" class="cost-price" min="0" value="0" required></td>
+                            <td class="cost-total">0</td>
+                            <td><button type="button" class="btn btn-danger remove-cost">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" style="text-align: right;"><strong>Total Biaya:</strong></td>
+                            <td id="totalCost">0</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <!-- 10. LANGKAH KERJA -->
+            <div class="form-group">
+                <h2>10. Langkah Kerja</h2>
+                <div id="stepsContainer">
+                    <div class="member-input">
+                        <input type="text" placeholder="Deskripsi langkah kerja" class="step-description" required>
+                        <button type="button" class="btn btn-danger remove-step">Hapus</button>
+                    </div>
+                </div>
+                <button type="button" id="addStepBtn" class="btn btn-add">Tambah Langkah</button>
+            </div>
+            
+            <!-- 11. TABEL WAKTU PELAKSANAANNYA -->
+            <div class="form-group">
+                <h2>11. Tabel Waktu Pelaksanaan</h2>
+                <div class="table-controls">
+                    <button type="button" id="addScheduleBtn" class="btn btn-add">Tambah Kegiatan</button>
+                </div>
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Kegiatan</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Tanggal Selesai</th>
+                            <th>Penanggung Jawab</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="schedule-activity" placeholder="Nama kegiatan" required></td>
+                            <td><input type="date" class="schedule-start" required></td>
+                            <td><input type="date" class="schedule-end" required></td>
+                            <td><input type="text" class="schedule-person" placeholder="Penanggung jawab" required></td>
+                            <td><button type="button" class="btn btn-danger remove-schedule">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 12. TABEL PEMBAGIAN PERAN -->
+            <div class="form-group">
+                <h2>12. Tabel Pembagian Peran</h2>
+                <div class="table-controls">
+                    <button type="button" id="addRoleBtn" class="btn btn-add">Tambah Peran</button>
+                </div>
+                <table id="rolesTable">
+                    <thead>
+                        <tr>
+                            <th>Nama Anggota</th>
+                            <th>Peran/Tugas</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select class="role-member" required>
+                                    <option value="">Pilih Anggota</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="role-task" placeholder="Deskripsi tugas" required></td>
+                            <td><input type="text" class="role-notes" placeholder="Keterangan tambahan"></td>
+                            <td><button type="button" class="btn btn-danger remove-role">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 18px;">Simpan Perencanaan Proyek</button>
+        </form>
+        
+        <div id="projectPreview" class="preview-section hidden">
+            <h2>Pratinjau Perencanaan Proyek</h2>
+            <div id="previewContent" class="preview-content"></div>
+            <button id="printBtn" class="btn" style="margin-top: 20px;">Cetak Dokumen</button>
+            <button id="editBtn" class="btn btn-danger" style="margin-top: 20px; margin-left: 10px;">Edit Kembali</button>
         </div>
-        
-        <button class="btn" id="motivateBtn">Berikan Semangat Lagi!</button>
-        
-        <footer>
-            Fabolous Class BISAA!!  -Raya
-        </footer>
     </div>
 
     <script>
-        // Random floating icons
-        const floatingIcons = [
-            '📚', '✏️', '🎯', '💡', '🚀', '🔍', '🧠', '⭐', '📝', '🏆'
-        ];
-        
-        const iconColors = [
-            '#4776E6', '#8E54E9', '#e73c7e', '#23a6d5', '#23d5ab', '#f39c12'
-        ];
-        
-        const floatingIconsContainer = document.querySelector('.floating-icons-container');
-        
-        for (let i = 0; i < 15; i++) {
-            const icon = document.createElement('div');
-            icon.classList.add('floating-icon');
-            icon.innerHTML = floatingIcons[Math.floor(Math.random() * floatingIcons.length)];
-            icon.style.fontSize = `${Math.random() * 20 + 15}px`;
-            icon.style.left = `${Math.random() * 100}%`;
-            icon.style.top = `${Math.random() * 100}%`;
-            icon.style.color = iconColors[Math.floor(Math.random() * iconColors.length)];
-            icon.style.animationDuration = `${Math.random() * 3 + 3}s`;
-            floatingIconsContainer.appendChild(icon);
-        }
-        
-        // Countdown timer with progress bar
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(7, 0, 0, 0);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variabel global untuk menyimpan data proyek
+            let projectData = {};
             
-            const timeLeft = tomorrow - now;
-            const totalTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-            const timeElapsed = totalTime - timeLeft;
-            const progressPercentage = (timeElapsed / totalTime) * 100;
+            // Fungsi untuk menambahkan anggota tim
+            document.getElementById('addMemberBtn').addEventListener('click', function() {
+                const container = document.getElementById('teamMembersContainer');
+                const div = document.createElement('div');
+                div.className = 'member-input';
+                div.innerHTML = `
+                    <input type="text" placeholder="Nama anggota" class="member-name" required>
+                    <button type="button" class="btn btn-danger remove-member">Hapus</button>
+                `;
+                container.appendChild(div);
+                
+                // Tambahkan event listener untuk tombol hapus
+                div.querySelector('.remove-member').addEventListener('click', function() {
+                    container.removeChild(div);
+                    updateRoleMemberDropdowns();
+                });
+            });
             
-            // Update progress bar
-            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            // Fungsi untuk menambahkan alat/bahan
+            document.getElementById('addMaterialBtn').addEventListener('click', function() {
+                const container = document.getElementById('materialsContainer');
+                const div = document.createElement('div');
+                div.className = 'member-input';
+                div.innerHTML = `
+                    <input type="text" placeholder="Nama alat/bahan" class="material-name" required>
+                    <input type="number" placeholder="Jumlah" class="material-quantity" min="1" required>
+                    <button type="button" class="btn btn-danger remove-material">Hapus</button>
+                `;
+                container.appendChild(div);
+                
+                div.querySelector('.remove-material').addEventListener('click', function() {
+                    container.removeChild(div);
+                });
+            });
             
-            if (timeLeft <= 0) {
-                document.getElementById('hours').innerHTML = '00';
-                document.getElementById('minutes').innerHTML = '00';
-                document.getElementById('seconds').innerHTML = '00';
-                return;
+            // Fungsi untuk menambahkan item biaya
+            document.getElementById('addCostBtn').addEventListener('click', function() {
+                const tbody = document.querySelector('#costTable tbody');
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="text" class="cost-item" placeholder="Nama item" required></td>
+                    <td><input type="number" class="cost-quantity" min="1" value="1" required></td>
+                    <td><input type="number" class="cost-price" min="0" value="0" required></td>
+                    <td class="cost-total">0</td>
+                    <td><button type="button" class="btn btn-danger remove-cost">Hapus</button></td>
+                `;
+                tbody.appendChild(row);
+                
+                // Tambahkan event listener untuk menghitung total
+                const quantityInput = row.querySelector('.cost-quantity');
+                const priceInput = row.querySelector('.cost-price');
+                const totalCell = row.querySelector('.cost-total');
+                
+                const calculateRowTotal = () => {
+                    const quantity = parseInt(quantityInput.value) || 0;
+                    const price = parseFloat(priceInput.value) || 0;
+                    const total = quantity * price;
+                    totalCell.textContent = total.toLocaleString('id-ID');
+                    calculateTotalCost();
+                };
+                
+                quantityInput.addEventListener('input', calculateRowTotal);
+                priceInput.addEventListener('input', calculateRowTotal);
+                
+                row.querySelector('.remove-cost').addEventListener('click', function() {
+                    tbody.removeChild(row);
+                    calculateTotalCost();
+                });
+            });
+            
+            // Fungsi untuk menghitung total biaya
+            function calculateTotalCost() {
+                const rows = document.querySelectorAll('#costTable tbody tr');
+                let total = 0;
+                
+                rows.forEach(row => {
+                    const quantity = parseInt(row.querySelector('.cost-quantity').value) || 0;
+                    const price = parseFloat(row.querySelector('.cost-price').value) || 0;
+                    total += quantity * price;
+                });
+                
+                document.getElementById('totalCost').textContent = total.toLocaleString('id-ID');
             }
             
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            // Fungsi untuk menambahkan langkah kerja
+            document.getElementById('addStepBtn').addEventListener('click', function() {
+                const container = document.getElementById('stepsContainer');
+                const div = document.createElement('div');
+                div.className = 'member-input';
+                div.innerHTML = `
+                    <input type="text" placeholder="Deskripsi langkah kerja" class="step-description" required>
+                    <button type="button" class="btn btn-danger remove-step">Hapus</button>
+                `;
+                container.appendChild(div);
+                
+                div.querySelector('.remove-step').addEventListener('click', function() {
+                    container.removeChild(div);
+                });
+            });
             
-            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+            // Fungsi untuk menambahkan jadwal
+            document.getElementById('addScheduleBtn').addEventListener('click', function() {
+                const tbody = document.querySelector('#scheduleTable tbody');
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="text" class="schedule-activity" placeholder="Nama kegiatan" required></td>
+                    <td><input type="date" class="schedule-start" required></td>
+                    <td><input type="date" class="schedule-end" required></td>
+                    <td><input type="text" class="schedule-person" placeholder="Penanggung jawab" required></td>
+                    <td><button type="button" class="btn btn-danger remove-schedule">Hapus</button></td>
+                `;
+                tbody.appendChild(row);
+                
+                row.querySelector('.remove-schedule').addEventListener('click', function() {
+                    tbody.removeChild(row);
+                });
+            });
             
-            setTimeout(updateCountdown, 1000);
-        }
-        
-        updateCountdown();
-        
-        // Confetti effect
-        function createConfetti() {
-            const confettiCount = 100;
-            const container = document.querySelector('body');
+            // Fungsi untuk menambahkan peran
+            document.getElementById('addRoleBtn').addEventListener('click', function() {
+                const tbody = document.querySelector('#rolesTable tbody');
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <select class="role-member" required>
+                            <option value="">Pilih Anggota</option>
+                        </select>
+                    </td>
+                    <td><input type="text" class="role-task" placeholder="Deskripsi tugas" required></td>
+                    <td><input type="text" class="role-notes" placeholder="Keterangan tambahan"></td>
+                    <td><button type="button" class="btn btn-danger remove-role">Hapus</button></td>
+                `;
+                tbody.appendChild(row);
+                
+                // Update dropdown anggota
+                updateRoleMemberDropdown(row.querySelector('.role-member'));
+                
+                row.querySelector('.remove-role').addEventListener('click', function() {
+                    tbody.removeChild(row);
+                });
+            });
             
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
+            // Fungsi untuk mengupdate dropdown anggota di tabel peran
+            function updateRoleMemberDropdowns() {
+                const dropdowns = document.querySelectorAll('.role-member');
+                dropdowns.forEach(dropdown => {
+                    updateRoleMemberDropdown(dropdown);
+                });
+            }
+            
+            function updateRoleMemberDropdown(dropdown) {
+                // Simpan nilai yang dipilih sebelumnya
+                const selectedValue = dropdown.value;
                 
-                // Random properties
-                const size = Math.random() * 10 + 5;
-                const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                const shape = Math.random() > 0.5 ? '50%' : '0%';
-                const left = Math.random() * 100;
-                const animDuration = Math.random() * 3 + 2;
-                const opacity = Math.random() * 0.7 + 0.3;
+                // Kosongkan dropdown kecuali opsi pertama
+                while (dropdown.options.length > 1) {
+                    dropdown.remove(1);
+                }
                 
-                // Apply styles
-                confetti.style.width = `${size}px`;
-                confetti.style.height = `${size}px`;
-                confetti.style.backgroundColor = color;
-                confetti.style.borderRadius = shape;
-                confetti.style.left = `${left}%`;
-                confetti.style.top = '-10px';
-                confetti.style.opacity = opacity;
-                
-                // Apply animation
-                confetti.style.animation = `fall ${animDuration}s linear forwards`;
-                
-                // Add random keyframe animation
-                const keyframes = `
-                    @keyframes fall {
-                        0% {
-                            transform: translateY(0) rotate(0deg);
-                            opacity: ${opacity};
-                        }
-                        50% {
-                            opacity: ${opacity};
-                        }
-                        75% {
-                            opacity: ${opacity * 0.7};
-                        }
-                        100% {
-                            transform: translateY(${window.innerHeight * 1.5}px) rotate(${Math.random() * 360}deg);
-                            opacity: 0;
-                        }
+                // Tambahkan anggota tim ke dropdown
+                const memberInputs = document.querySelectorAll('.member-name');
+                memberInputs.forEach((input, index) => {
+                    const memberName = input.value.trim();
+                    if (memberName) {
+                        const option = document.createElement('option');
+                        option.value = index;
+                        option.textContent = memberName;
+                        dropdown.appendChild(option);
                     }
+                });
+                
+                // Kembalikan nilai yang dipilih sebelumnya jika masih ada
+                if (selectedValue && dropdown.querySelector(`option[value="${selectedValue}"]`)) {
+                    dropdown.value = selectedValue;
+                }
+            }
+            
+            // Event listener untuk preview gambar desain
+            document.getElementById('designFile').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    document.getElementById('designFileName').textContent = file.name;
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const preview = document.getElementById('designPreview');
+                        const img = document.getElementById('designPreviewImage');
+                        img.src = event.target.result;
+                        preview.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Event listener untuk form submission
+            document.getElementById('projectForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Kumpulkan semua data
+                projectData = {
+                    title: document.getElementById('projectTitle').value,
+                    teamName: document.getElementById('teamName').value,
+                    members: Array.from(document.querySelectorAll('.member-name')).map(input => input.value),
+                    problem: document.getElementById('researchProblem').value,
+                    background: document.getElementById('problemBackground').value,
+                    goals: document.getElementById('projectGoals').value,
+                    benefits: document.getElementById('projectBenefits').value,
+                    design: document.getElementById('designFile').files[0] ? document.getElementById('designFile').files[0].name : null,
+                    materials: Array.from(document.querySelectorAll('.material-name')).map((input, index) => ({
+                        name: input.value,
+                        quantity: document.querySelectorAll('.material-quantity')[index].value
+                    })),
+                    costs: Array.from(document.querySelectorAll('#costTable tbody tr')).map(row => ({
+                        item: row.querySelector('.cost-item').value,
+                        quantity: row.querySelector('.cost-quantity').value,
+                        price: row.querySelector('.cost-price').value,
+                        total: row.querySelector('.cost-total').textContent
+                    })),
+                    totalCost: document.getElementById('totalCost').textContent,
+                    steps: Array.from(document.querySelectorAll('.step-description')).map(input => input.value),
+                    schedule: Array.from(document.querySelectorAll('#scheduleTable tbody tr')).map(row => ({
+                        activity: row.querySelector('.schedule-activity').value,
+                        start: row.querySelector('.schedule-start').value,
+                        end: row.querySelector('.schedule-end').value,
+                        person: row.querySelector('.schedule-person').value
+                    })),
+                    roles: Array.from(document.querySelectorAll('#rolesTable tbody tr')).map(row => ({
+                        member: row.querySelector('.role-member').options[row.querySelector('.role-member').selectedIndex].text,
+                        task: row.querySelector('.role-task').value,
+                        notes: row.querySelector('.role-notes').value
+                    }))
+                };
+                
+                // Tampilkan preview
+                showProjectPreview();
+            });
+            
+            // Fungsi untuk menampilkan preview proyek
+            function showProjectPreview() {
+                const previewContent = document.getElementById('previewContent');
+                let html = `
+                    <h1>${projectData.title}</h1>
+                    
+                    <h2>1. Judul Proyek</h2>
+                    <p>${projectData.title}</p>
+                    
+                    <h2>2. Nama Anggota dan Nama Tim</h2>
+                    <p><strong>Nama Tim:</strong> ${projectData.teamName}</p>
+                    <p><strong>Anggota Tim:</strong></p>
+                    <ul>
+                        ${projectData.members.map(member => `<li>${member}</li>`).join('')}
+                    </ul>
+                    
+                    <h2>3. Masalah yang Mau Diteliti</h2>
+                    <p>${projectData.problem.replace(/\n/g, '<br>')}</p>
+                    
+                    <h2>4. Penyebab Masalah (Latar Belakang Masalah)</h2>
+                    <p>${projectData.background.replace(/\n/g, '<br>')}</p>
+                    
+                    <h2>5. Tujuan Proyek</h2>
+                    <p>${projectData.goals.replace(/\n/g, '<br>')}</p>
+                    
+                    <h2>6. Manfaat Proyek</h2>
+                    <p>${projectData.benefits.replace(/\n/g, '<br>')}</p>
+                    
+                    <h2>7. Desain Proyek (Gambar Rancangan Purwarupa)</h2>
+                    ${projectData.design ? `<p>File desain: ${projectData.design}</p>` : '<p>Tidak ada desain diunggah</p>'}
+                    
+                    <h2>8. Alat dan Bahan</h2>
+                    <table border="1" cellpadding="5" cellspacing="0" style="width:100%">
+                        <tr>
+                            <th>Nama Alat/Bahan</th>
+                            <th>Jumlah</th>
+                        </tr>
+                        ${projectData.materials.map(material => `
+                            <tr>
+                                <td>${material.name}</td>
+                                <td>${material.quantity}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                    
+                    <h2>9. Tabel Perencanaan Biaya</h2>
+                    <table border="1" cellpadding="5" cellspacing="0" style="width:100%">
+                        <tr>
+                            <th>Item</th>
+                            <th>Jumlah</th>
+                            <th>Harga Satuan</th>
+                            <th>Total</th>
+                        </tr>
+                        ${projectData.costs.map(cost => `
+                            <tr>
+                                <td>${cost.item}</td>
+                                <td>${cost.quantity}</td>
+                                <td>${parseInt(cost.price).toLocaleString('id-ID')}</td>
+                                <td>${cost.total}</td>
+                            </tr>
+                        `).join('')}
+                        <tr>
+                            <td colspan="3" style="text-align:right;"><strong>Total Biaya:</strong></td>
+                            <td><strong>${projectData.totalCost}</strong></td>
+                        </tr>
+                    </table>
+                    
+                    <h2>10. Langkah Kerja</h2>
+                    <ol>
+                        ${projectData.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                    
+                    <h2>11. Tabel Waktu Pelaksanaan</h2>
+                    <table border="1" cellpadding="5" cellspacing="0" style="width:100%">
+                        <tr>
+                            <th>Kegiatan</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Tanggal Selesai</th>
+                            <th>Penanggung Jawab</th>
+                        </tr>
+                        ${projectData.schedule.map(item => `
+                            <tr>
+                                <td>${item.activity}</td>
+                                <td>${formatDate(item.start)}</td>
+                                <td>${formatDate(item.end)}</td>
+                                <td>${item.person}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                    
+                    <h2>12. Tabel Pembagian Peran</h2>
+                    <table border="1" cellpadding="5" cellspacing="0" style="width:100%">
+                        <tr>
+                            <th>Nama Anggota</th>
+                            <th>Peran/Tugas</th>
+                            <th>Keterangan</th>
+                        </tr>
+                        ${projectData.roles.map(role => `
+                            <tr>
+                                <td>${role.member}</td>
+                                <td>${role.task}</td>
+                                <td>${role.notes}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
                 `;
                 
-                const styleElement = document.createElement('style');
-                styleElement.innerHTML = keyframes;
-                document.head.appendChild(styleElement);
+                previewContent.innerHTML = html;
                 
-                container.appendChild(confetti);
-                
-                // Remove confetti after animation completes
-                setTimeout(() => {
-                    container.removeChild(confetti);
-                    document.head.removeChild(styleElement);
-                }, animDuration * 1000);
+                // Tampilkan section preview dan sembunyikan form
+                document.getElementById('projectForm').classList.add('hidden');
+                document.getElementById('projectPreview').classList.remove('hidden');
             }
-        }
-        
-        // Motivational quotes with authors
-        const motivationalQuotes = [
-            {
-                quote: "Kegagalan hanya terjadi jika kita menyerah.",
-                author: "B.J. Habibie"
-            },
-            {
-                quote: "Keberhasilan adalah kemampuan untuk melewati dan mengatasi dari satu kegagalan ke kegagalan berikutnya tanpa kehilangan semangat.",
-                author: "Winston Churchill"
-            },
-            {
-                quote: "Jangan biarkan hari kemarin menyita terlalu banyak hari ini.",
-                author: "Will Rogers"
-            },
-            {
-                quote: "Kesuksesan bukanlah kunci kebahagiaan. Kebahagiaan adalah kunci kesuksesan.",
-                author: "Albert Schweitzer"
-            },
-            {
-                quote: "Semuanya terlihat tidak mungkin sampai semuanya selesai.",
-                author: "Nelson Mandela"
-            },
-            {
-                quote: "Jangan berharap segala sesuatunya jadi mudah, berdoalah supaya kamu menjadi lebih kuat.",
-                author: "John F. Kennedy"
-            },
-            {
-                quote: "Kita tidak bisa mengubah arah angin, tapi kita bisa menyesuaikan layar kita.",
-                author: "Jimmy Dean"
-            },
-            {
-                quote: "Jangan takut salah, karena dengan kesalahan yang pertama kita dapat menambah pengetahuan untuk mencari yang benar pada langkah yang kedua.",
-                author: "Buya Hamka"
-            },
-            {
-                quote: "Belajarlah dari kesalahan orang lain. Kamu tak dapat hidup cukup lama untuk melakukan semua kesalahan itu sendiri.",
-                author: "Eleanor Roosevelt"
-            },
-            {
-                quote: "Keberanian adalah ketakutan yang telah melalui doa.",
-                author: "Karrie Washinton"
-            },
-            {
-                quote: "Ketika kau sedang mengalami kesulitan dan bertanya-tanya kemana Allah, cukup ingat bahwa seorang guru selalu diam saat ujian berjalan.",
-                author: "Nourman Ali Khan"
-            },
-            {
-                quote: "Usaha akan membuahkan hasil setelah seseorang tidak menyerah.",
-                author: "Napoleon Hill"
+            
+            // Fungsi untuk memformat tanggal
+            function formatDate(dateString) {
+                if (!dateString) return '-';
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString('id-ID', options);
             }
-        ];
-        
-        // Tip animation
-        function animateTips() {
-            const tips = document.querySelectorAll('#tips-list li');
-            tips.forEach((tip, index) => {
-                tip.style.opacity = '0';
-                tip.style.transform = 'translateX(-20px)';
-                tip.style.transition = 'all 0.5s ease';
-                
-                setTimeout(() => {
-                    tip.style.opacity = '1';
-                    tip.style.transform = 'translateX(0)';
-                }, index * 200);
-            });
-        }
-        
-        // Run tip animation initially
-        setTimeout(animateTips, 1500);
-        
-        // Quote button click handler
-        document.getElementById('motivateBtn').addEventListener('click', function() {
-            const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
-            const randomQuote = motivationalQuotes[randomIndex];
             
-            // Animate quote change
-            const quoteElement = document.getElementById('quote');
-            const authorElement = document.getElementById('author');
-            
-            quoteElement.style.opacity = '0';
-            authorElement.style.opacity = '0';
-            
-            setTimeout(() => {
-                quoteElement.innerHTML = `"${randomQuote.quote}"`;
-                authorElement.innerHTML = `- ${randomQuote.author}`;
-                
-                quoteElement.style.opacity = '1';
-                authorElement.style.opacity = '1';
-            }, 300);
-            
-            // Create confetti effect
-            createConfetti();
-            
-            // Button click animation
-            this.classList.add('clicked');
-            setTimeout(() => {
-                this.classList.remove('clicked');
-            }, 200);
-        });
-        
-        // Add some tactile feedback when hovering over elements
-        const interactiveElements = document.querySelectorAll('.btn, .tips, .quote-container');
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
+            // Event listener untuk tombol cetak
+            document.getElementById('printBtn').addEventListener('click', function() {
+                window.print();
             });
             
-            element.addEventListener('mouseleave', function() {
-                this.style.transform = '';
+            // Event listener untuk tombol edit
+            document.getElementById('editBtn').addEventListener('click', function() {
+                document.getElementById('projectPreview').classList.add('hidden');
+                document.getElementById('projectForm').classList.remove('hidden');
+            });
+            
+            // Hitung total biaya saat pertama kali dimuat
+            calculateTotalCost();
+            
+            // Update dropdown anggota saat input anggota berubah
+            document.getElementById('teamMembersContainer').addEventListener('input', function(e) {
+                if (e.target.classList.contains('member-name')) {
+                    updateRoleMemberDropdowns();
+                }
             });
         });
-        
-        // Initial confetti burst
-        setTimeout(createConfetti, 2000);
     </script>
 </body>
 </html>
